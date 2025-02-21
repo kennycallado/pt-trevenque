@@ -61,4 +61,14 @@ Route::prefix('products')->group(function () {
         '/toggle/{id}',
         [ProductController::class, 'toggleActive']
     )->name('api.products.toggle');
+
+    Route::post(
+        '/{id}/images',
+        [ProductImageController::class, 'store']
+    )->name('api.products.images.store');
+
+    Route::delete(
+        '/{id}/images/{imageId}',
+        [ProductImageController::class, 'delete']
+    )->name('api.products.images.delete');
 });
