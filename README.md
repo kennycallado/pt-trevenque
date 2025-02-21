@@ -69,3 +69,17 @@ curl -X 'PUT' -v -s -H 'Accept:application/json' -H 'Content-Type:application/js
 ```bash
 curl -X 'DELETE' -v -s -A 'kulala.nvim/4.10.0' 'http://localhost:8000/api/products/1'
 ```
+
+#### Images
+
+1. create
+
+```bash
+curl -X 'POST' -v -s -H 'Accept:application/json' -H 'Content-Type:application/json' --data-binary '{"image": "https://picsum.photos/400/400?t=ab"}' 'http://localhost:8000/api/products/2/images'
+```
+
+1. delete
+
+```bash
+curl -X 'DELETE' -v -s -H 'Accept:application/json' 'http://localhost:8000/api/products/2/images/2'
+```
