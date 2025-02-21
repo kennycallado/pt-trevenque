@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Product;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\ProductImage;
 use Illuminate\Database\Seeder;
 
 class ProductImageSeeder extends Seeder
@@ -14,7 +14,11 @@ class ProductImageSeeder extends Seeder
     public function run(): void
     {
         Product::all()->each(function (Product $product) {
-            $product->images()->create(rand(1, 5));
+            ProductImage::factory()
+                ->count(rand(1, 5))
+                ->create([
+                    'product_id' => $product->id,
+                ]);
         });
     }
 }
