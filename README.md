@@ -1,5 +1,52 @@
 # PT-Trevenque
 
+## Get the project
+
+```bash
+git clone https://github.com/kennycallado/pt-trevenque
+cd pt-trevenque
+```
+
+## Solve dependencies
+
+### system
+
+- php >= 8.2
+- composer
+
+### project
+
+```bash
+composer install
+```
+
+## Prepare the environment
+
+- Copy `.env.example` to `.env`
+
+```bash
+cp .env.example .env
+```
+
+In case you want to use the sqlite database, you can skip this step.
+
+- Update `.env`
+
+```bash
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+- Execute the migrations and seeders
+
+```bash
+php artisan migrate:refresh --seed
+```
+
 ## Testing endpoints
 
 I have provided a `rest.http` with some examples of how to use the API. You can use it with the `REST Client` extension for Visual Studio Code or `kulala.nvim` plugin for neovim. Anyway I also provide the curl commands for each endpoint.
