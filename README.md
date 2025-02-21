@@ -37,3 +37,35 @@ curl -X 'PUT' -v -s -H 'Accept:application/json' -H 'Content-Type:application/js
 ```bash
 curl -X 'DELETE' -v -s -A 'kulala.nvim/4.10.0' 'http://localhost:8000/api/categories/2'
 ```
+
+#### Products
+
+1. index
+
+```bash
+curl -X 'GET' -v -s -H 'Accept:application/json' 'http://localhost:8000/api/products'
+```
+
+1. show
+
+```bash
+curl -X 'GET' -v -s -H 'Accept:application/json' 'http://localhost:8000/api/products/2'
+```
+
+1. create
+
+```bash
+curl -X 'POST' -v -s -H 'Accept:application/json' -H 'Content-Type:application/json' --data-binary '{"name": "Name Foo", "stock": 1,    "price": 10.5, "active": true, "category_id": 1}' 'http://localhost:8000/api/products'
+```
+
+1. update
+
+```bash
+curl -X 'PUT' -v -s -H 'Accept:application/json' -H 'Content-Type:application/json' --data-binary '{"name": "Name 6", "stock": 12, "price": 10.60, "active": true, "category_id": 1}' 'http://localhost:8000/api/products/1'
+```
+
+1. delete
+
+```bash
+curl -X 'DELETE' -v -s -A 'kulala.nvim/4.10.0' 'http://localhost:8000/api/products/1'
+```

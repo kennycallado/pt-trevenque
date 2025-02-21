@@ -26,3 +26,53 @@ Content-Type: application/json
 
 ### categories delete
 DELETE http://localhost:8000/api/categories/2
+
+### products index
+GET http://localhost:8000/api/products
+Accept: application/json
+
+### products index pagination
+GET http://localhost:8000/api/products?page=2
+Accept: application/json
+
+### products index filter category
+GET http://localhost:8000/api/products?category_id=2
+Accept: application/json
+
+### products index filter category
+GET http://localhost:8000/api/products?active=1
+Accept: application/json
+
+### products show
+GET http://localhost:8000/api/products/1
+Accept: application/json
+
+### products create
+POST http://localhost:8000/api/products
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "Name Foo",
+    "stock": 1,
+    "price": 10.5,
+    "active": true,
+    "category_id": 1
+}
+
+### products update
+PUT http://localhost:8000/api/products/1
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "Name 6",
+    "stock": 12,
+    "price": 10.60,
+    "active": true,
+    "category_id": 1
+}
+
+### products delete
+DELETE http://localhost:8000/api/products/2
+Accept: application/json
