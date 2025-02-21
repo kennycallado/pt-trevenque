@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Product;
+use App\Models\ProductImage;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        $products = Product::with('category');
+        $products = Product::with(['category', 'images']);
         $page = $request->has('page') ? $request->page : 1;
 
         if ($request->has('category_id')) {
@@ -34,7 +35,7 @@ class ProductController extends Controller
 
     public function show(string $id)
     {
-        $product = Product::with('category')->findOrFail($id);
+        $product = Product::with(['category', 'images'])->findOrFail($id);
 
         return response()->json($product, 200);
     }
@@ -51,8 +52,11 @@ class ProductController extends Controller
 
         $product = Product::create($request->all());
 
-        $product->load('category');
+        ProductImage::factory()->create([
+            'product_id' => $product->id,
+        ]);
 
+        $product->load(['category', 'images']);
         return response()->json($product, 201);
     }
 
@@ -77,8 +81,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->update($request->all());
 
-        $product->load('category');
-
+        $product->load(['category', 'images']);
         return response()->json($product, 200);
     }
 

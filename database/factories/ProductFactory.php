@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductImage;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -23,6 +24,10 @@ class ProductFactory extends Factory
                         Category::factory()->create()
                     );
             }
+        })->afterCreating(function (Product $product) {
+            ProductImage::factory()->create([
+                'product_id' => $product->id,
+            ]);
         });
     }
 
