@@ -31,7 +31,7 @@ class ProductImageFactory extends Factory
         $randSeed = rand(1, 100);
 
         return [
-            'url' => 'https://picsum.photos/400/400?t=' . $randSeed,
+            'url' => 'https://picsum.photos/400/400?t='.$randSeed,
         ];
     }
 }
